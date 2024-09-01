@@ -4,61 +4,15 @@
 
 
 import streamlit as st
-
-
-
-
-
 import pickle
-
-
-
-
-
 import os
-
-
-
-
-
 from streamlit_option_menu import option_menu
-
-
-
-
-
 st.set_page_config(page_title="Human Disease Prediction Application",layout='wide',page_icon="💖")
 
-
-
-
-
-
-
-
-
-
 diabetes_model = pickle.load(open('C:/Users/820sh/diabetes_knn.pkl','rb'))
-
-
-
-
-
 kidney_diesease_model = pickle.load(open('C:/Users/820sh/kindey_dtc.pkl','rb'))
-
-
-
-
-
 liver_diesease_model = pickle.load(open('C:/Users/820sh/liver.pkl','rb'))
-
-
-
-
-
 heart_disease_model = pickle.load(open('C:/Users/820sh/heart.pkl','rb'))
-
-
 
 
 with st.sidebar:
@@ -283,7 +237,7 @@ if selected == 'Liver Disease Prediction':
     
 
     # code for Prediction
-    kindey_diagnosis = ''
+    liver_diagnosis = ''
 
     # creating a button for Prediction    
     if st.button("Liver's Test Result"):
@@ -296,7 +250,7 @@ if selected == 'Liver Disease Prediction':
         prediction = liver_diesease_model.predict([user_input])
 
         if prediction[0] == 1:
-            kindey_diagnosis = "The person has Liver's disease"
+            liver_diagnosis = "The person has Liver's disease"
         else:
-            kindey_diagnosis = "The person does not have Liver's disease"
-    st.success(kindey_diagnosis)
+            liver_diagnosis = "The person does not have Liver's disease"
+    st.success(liver_diagnosis)
